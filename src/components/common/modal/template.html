@@ -1,0 +1,10 @@
+<!-- <div ng-if="$ctrl.modalInstance"> -->
+<div class="hide-bg" ng-if="$ctrl.modalInstance">
+    <div class="hide-rec" ng-click="$ctrl.hideErrorModal()"></div>
+    <div class="error-window">
+        <div class="exit" ng-click="$ctrl.hideErrorModal()">X</div>
+        <div class="error-title">ERROR</div>
+        <div class="error-code">Error code: <span>200</span></div>
+        <div class="error-message" ng-repeat="modalInst in $ctrl.modalInstance">Error message: <span>{{modalInst}}</span></div>
+    </div>    
+</div>

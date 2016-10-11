@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <p class="matches"> {{$ctrl.visEl}} of {{$ctrl.numHouse}} matches</p>
+        </div>
+    </div>
+    <div class="row">
+        <ul class="result-list">
+            <li><a ui-sref="search.location" class="back">Back</a></li>
+            <favorites-item ng-repeat="house in $ctrl.houseList" house="house"></favorites-item>
+            <li class="loadMore" ng-class="$ctrl.loadMoreHide()"><input type="submit" name="load-more" ng-click="$ctrl.LoadMore()" value="load more"></li>
+        </ul>
+    </div>
+</div>

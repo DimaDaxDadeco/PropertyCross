@@ -14,7 +14,20 @@ module.exports = {
             {
                 test: /\.scss$/,
                 loaders: ["style", "css", "sass"]
+            },
+            {
+                test: /\.html$/,
+                loader: "html"
             }
         ]
+    },
+    resolve: {
+        root: [
+            path.resolve("./src/")
+        ],
+        alias: {
+            'components': path.resolve(__dirname, 'src', 'components')
+        },
+        extensions: ['', '.js']
     }
 };

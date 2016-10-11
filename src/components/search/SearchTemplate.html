@@ -1,0 +1,14 @@
+<div class="container searchTop">
+    <div class="row">
+        <div class="col-xs-12 favourite"><a ui-sref="favorites">Favourite</a></div>
+    </div>
+    <div class="row">
+        <p>Use the form below to search for houses to buy. You can search by place-name, postcode, or click 'My location', to search in your current location!</p>
+    </div>
+    <div class="row">
+        <input type="text" name="searchText" placeholder="Search..." class="searchText" ng-model="searchQuery">
+        <input type="submit" name="go" class="go" value="Go" ng-click="getLocations()">
+        <input type="submit" name="myLocation" class="myLocation" value="My location">
+    </div>
+</div>
+<div ui-view></div>

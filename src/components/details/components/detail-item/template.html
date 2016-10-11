@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-5"><h2>Property Details</h2></div>
+        <div class="col-xs-6 favourite"><a ng-click="$ctrl.add()"> + </a></div>
+    </div>
+    <a ui-sref="results" class="back">Back</a>
+    <div class="row" ng-repeat="det in $ctrl">
+        <div class="col-xs-12">{{det.price}}</div>
+        <div class="col-xs-12">{{det.title}}</div>
+        <div class="col-xs-12"><img ng-src="{{det.img_url}}"></div>
+        <div class="col-xs-12">{{det.bedroom_number}} bed, {{det.bathroom_number}} bathrooms</div>
+        <div class="col-xs-12">{{det.summary}}</div>
+    </div>
+</div>

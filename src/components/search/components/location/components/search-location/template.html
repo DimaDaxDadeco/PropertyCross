@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            Recent searches:
+        </div>
+    </div>
+    <div class="row">
+        <ul class="listOfLocation">
+             <li ng-repeat="resp in $ctrl.recentSearch">
+                <a ui-sref="results({location: resp})">{{resp}} #{{$index + 1}} ({{$ctrl.houseList[$index].length}})</a>
+            </li>
+        </ul>
+    </div>
+</div>
