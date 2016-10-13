@@ -1,6 +1,9 @@
-module.exports = function($stateParams, localStorageService, ModalService) {
+module.exports = function($stateParams, localStorageService, ModalService, ResultsService, SearchService) {
 
     var self = this;
+
+    ResultsService.resetLocationsData();
+    SearchService.backVal = undefined;
 
     var errors = {
         "200": "ambiguous location",
@@ -16,33 +19,36 @@ module.exports = function($stateParams, localStorageService, ModalService) {
         var hasError = !!errors[responseCode];        
     }
 
-    if (hasError) {
-        if(localStorage['recentSearch']) self.recentSearch = JSON.parse(localStorage['recentSearch']);
-        if(localStorage['houseList']) self.houseList = JSON.parse(localStorage['houseList']);
-        ModalService.showErrorModal(errors[responseCode]);
-    } else {
-
-        self.houseResponse = $stateParams.houseResponse;
-
+    if (hasError) {     
         self.recentSearch = localStorage['recentSearch'] ? JSON.parse(localStorage['recentSearch']) : [];
+        ModalService.showErrorModal(errors[responseCode]);
+        return;
+    } 
 
-        if ($stateParams.houseResponse) {
-            if (localStorage['recentSearch']) {
-                self.recentSearch = JSON.parse(localStorage['recentSearch']);
-                var numOfElement = self.recentSearch.indexOf($stateParams.houseResponse.locations[0].long_title);
+    self.houseResponse = $stateParams.houseResponse;
 
-                if (numOfElement != -1) {
-                    self.recentSearch.splice(numOfElement, 1);
-                }
-            }            
-        }
+    self.recentSearch = localStorage['recentSearch'] ? JSON.parse(localStorage['recentSearch']) : [];
 
-        if ($stateParams.houseResponse) self.recentSearch.unshift($stateParams.houseResponse.locations[0].long_title);
-        localStorage['recentSearch'] = JSON.stringify(self.recentSearch);
+    if ($stateParams.houseResponse && localStorage['recentSearch']) {
+        self.recentSearch = JSON.parse(localStorage['recentSearch']);
 
-        self.houseList = localStorage['houseList'] ? JSON.parse(localStorage['houseList']) : []; 
+        var titles = []; 
+        self.recentSearch.forEach(function(item, i, arr) {
+            titles.push(item.title)
+        });
+        var numOfElement = titles.indexOf($stateParams.houseResponse.locations[0].long_title);
 
-        if ($stateParams.houseResponse) self.houseList.unshift($stateParams.houseResponse.listings);
-        localStorage['houseList'] = JSON.stringify(self.houseList);    
+        if (numOfElement !== -1) {
+            self.recentSearch.splice(numOfElement, 1);
+        }       
     }
+
+    if ($stateParams.houseResponse) {
+        self.recentSearch.unshift({
+            title: $stateParams.houseResponse.locations[0].long_title,
+            totalRes: $stateParams.houseResponse.total_results
+        });
+    }
+    localStorage['recentSearch'] = JSON.stringify(self.recentSearch);        
+
 }

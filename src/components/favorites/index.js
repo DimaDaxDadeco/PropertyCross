@@ -10,7 +10,8 @@ angular
         $stateProvider
             .state('favorites', {
                 template: FavoritesTemplate,
-                controller: FavoritesCtrl
+                controller: FavoritesCtrl,
+                controllerAs: '$ctrl'
             })
     })
     .service('FavoritesService', FavoritesService)

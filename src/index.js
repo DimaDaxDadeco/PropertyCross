@@ -13,5 +13,5 @@ angular.module('PropertyCross', [
   'details',
   'results',
   'ModalService',
-  'CommonService'
+  'common'
 ]);

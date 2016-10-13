@@ -2,9 +2,9 @@ module.exports = function($scope, ModalService) {
 
     var self = this;
 
-    $scope.$watch(function(){
+    $scope.$watch(function() {
         return ModalService.modalInstance;
-    }, function(modalInstance){
+    }, function(modalInstance) {
         self.modalInstance = modalInstance;
     });
 

@@ -1,24 +1,34 @@
-module.exports = function($stateParams) {
+module.exports = function($stateParams, ResultsService, SearchService) {
+    
     var self = this;
 
     self.houseDetail = $stateParams.houseDetail;
+    self.backVal = SearchService.backVal;
 
+    // self.add = function() {
+    self.favorites = localStorage['favorites'] ? JSON.parse(localStorage['favorites']): [];
+    if (localStorage['favorites']) {
+        self.favorites = JSON.parse(localStorage['favorites']);
+        var checkEq = false;
+        for (let i = 0; i < self.favorites.length; i++) {
+            if (self.favorites[i].title == self.houseDetail.title) {
+                checkEq = true;
+            }                
+        }
+        /*if (!checkEq) {
+            self.favorites.push(self.houseDetail);
+        }*/
+    } /*else {
+        self.favorites.push(self.houseDetail);            
+    } */
     self.add = function() {
-        this.a = localStorage['favourites'] ? JSON.parse(localStorage['favourites']): [];
-        if (localStorage['favourites']) {
-            self.a = JSON.parse(localStorage['favourites']);
-            self.a.forEach(function(item, i, arr) {
-                if (item.title != self.houseDetail.title) {
-                    // console.log(arr);
-                    // console.log(item.title + " | " + self.houseDetail.title);
-                    arr.push(self.houseDetail);
-                }
-            });
-        } else {
-            this.a.push(self.houseDetail);            
-        } 
-        // console.log(this.a);
-        localStorage['favourites'] = JSON.stringify(this.a);
+        checkEq = true;
+        self.favorites.push(self.houseDetail);   
+        localStorage['favorites'] = JSON.stringify(self.favorites);       
+    }
+    // }
+    self.hideAddFavorites = function() {
+        return checkEq ? "hide" : "";
     }
 
     var arrTittle = $stateParams.houseDetail.title.split(',');

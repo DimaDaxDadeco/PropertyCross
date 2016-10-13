@@ -6,14 +6,15 @@ var ResultsComponent = require('./components/results-item');
 
 angular
     .module('results', [])
-    .config(function($stateProvider,localStorageServiceProvider) {
+    .config(function($stateProvider) {
         $stateProvider
             .state('results', {
                 template: ResultsTpl,
                 controller: ResultsCtrl,
                 params: {
                     houseList: null,
-                    location: null
+                    location: null,
+                    totalRes: null
                 },
                 controllerAs: '$ctrl'
             });

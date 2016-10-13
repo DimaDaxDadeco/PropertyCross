@@ -1,33 +1,31 @@
-module.exports = function SearchService(ResultsService) {
+module.exports = function($scope, $stateParams, SearchService, ResultsService) {
 
     var self = this;
+    // SearchService.backVal = undefined; ???
 
-    ResultsService.getLocations()
-        .then(function(response){
-            self.houseList = response.data.response.listings;     
+    if (!ResultsService.houseList.length) {
+        self.pageNum = 1;
+        ResultsService.getLocations(); 
+    } else {
+        self.pageNum = ResultsService.numPage;
+    }
 
-            self.currentList = 0;
-            self.elemOnList = 3;
+    $scope.$watch(function() {
+        return ResultsService.houseList;
+    }, function(modalInstance) {
+        self.houseList = ResultsService.houseList;  
+        self.numHouse = ResultsService.totalRes; 
+        self.visibleElementsAmount = self.houseList.length < self.numHouse ? self.houseList.length : self.numHouse;   
+    });
 
-            self.numHouse = ResultsService.listLength(self.houseList); 
+    self.LoadMore = function() {
+        ResultsService.getLocations(++self.pageNum).then(function(response){
+            self.houseList = ResultsService.houseList;
+            self.visibleElementsAmount = self.houseList.length;
+        });
+    };
 
-            self.visEl = self.elemOnList < self.numHouse ? self.elemOnList : self.numHouse;
-
-            self.houseList = ResultsService.get(self.currentList * self.elemOnList, self.elemOnList, response.data.response.listings);
-
-            self.LoadMore = function() {
-                self.currentList ++;
-                if (self.currentList * self.elemOnList + self.elemOnList > self.numHouse) {
-                    self.visEl = self.numHouse;
-                } else {
-                    self.visEl = self.currentList * self.elemOnList + self.elemOnList;
-                }
-                var newElemList = ResultsService.get(self.currentList * self.elemOnList, self.elemOnList, response.data.response.listings);
-
-                self.houseList = self.houseList.concat(newElemList);
-            }
-            self.loadMoreHide = function() {
-                return (self.currentList * self.elemOnList + self.elemOnList) >= self.numHouse ? "loadMoreHide": "";
-            } 
-        });       
+    self.loadMoreHide = function() {
+        return self.visibleElementsAmount >= self.numHouse ? "hide": "";
+    };
 }

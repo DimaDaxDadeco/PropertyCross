@@ -5,11 +5,18 @@ var MyLocationComponent = require('./components/myLocation-item');
 
 
 angular.module('search.myLocation', [])
-    .config(function($stateProvider) {
+    .config(function($stateProvider, $locationProvider) {
+        $locationProvider.html5Mode({
+            enabled: true,
+            requireBase: false
+        });
         $stateProvider
             .state('search.mylocation', {
                 url: "",
-                template: MyLocationTpl
+                template: MyLocationTpl,
+                params: {
+                    houseResponse: null
+                }
             });
     })
     .component('myLocation', MyLocationComponent);

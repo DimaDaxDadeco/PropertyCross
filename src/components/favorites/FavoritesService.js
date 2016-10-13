@@ -1,10 +1,13 @@
-module.exports = function FavoritesService($http) {
+module.exports = function FavoritesService(SearchService) {
     
     var self = this;
-
-    /*self.getLocationItem = function() {
-        var url = "http://api.nestoria.co.uk/api?country=uk&pretty=1&action=search_listings&encoding=json&listing_type=buy&page=1&place_name=" + localStorage['location'];
-        
-    }*/
+    
+    self.get = function(currentList, elemOnList, arr) {
+        SearchService.backVal = "favorites";
+        return arr.slice(currentList, elemOnList + currentList);
+    };
+    self.listLength = function(arr) {
+        return arr.length;
+    };
 
 }

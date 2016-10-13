@@ -13,9 +13,11 @@ angular
     .config(function($stateProvider) {        
         $stateProvider
             .state('search', {
+                url: "/",
                 template: SearchTpl,
                 abstract: true,
-                controller: SearchCtrl
+                controller: SearchCtrl,
+                controllerAs: '$ctrl'
             });
     })    
     .service('SearchService', SearchService);

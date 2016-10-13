@@ -1,13 +1,13 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            Please select a location below:
+            Recent searches:
         </div>
     </div>
     <div class="row">
-        <ul class="listOfLocation">
+        <ul class="list-locations">
              <li ng-repeat="resp in $ctrl.recentSearch">
-                <a ui-sref="results({location: resp})">{{resp}} #{{$index + 1}} ({{$ctrl.houseList[$index].length}})</a>
+                <a ui-sref="results({location: resp, totalRes: $ctrl.totalRes[$index]})">{{resp}} #{{$index + 1}} ({{$ctrl.totalRes[$index]}})</a>
             </li>
         </ul>
     </div>

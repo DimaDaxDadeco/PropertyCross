@@ -5,9 +5,9 @@
         </div>
     </div>
     <div class="row">
-        <ul class="listOfLocation">
+        <ul class="list-locations">
              <li ng-repeat="resp in $ctrl.recentSearch">
-                <a ui-sref="results({location: resp})">{{resp}} #{{$index + 1}} ({{$ctrl.houseList[$index].length}})</a>
+                <a ui-sref="results({location: resp.title, totalRes: resp.totalRes})">{{resp.title}} #{{$index + 1}} ({{resp.totalRes}})</a>
             </li>
         </ul>
     </div>
