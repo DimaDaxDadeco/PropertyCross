@@ -1,6 +1,12 @@
-module.exports = function SearchCtrl($state, $http, SearchService) {
+module.exports = function SearchCtrl($scope, $state, $http, SearchService) {
 
     var self = this;
+    
+    $scope.$watch(function() {
+        return SearchService.backLink;
+    }, function() {
+        self.backLink = SearchService.backLink;
+    });
 
     self.getLocations = function () {
         SearchService.getLocations(self.searchQuery)
@@ -22,4 +28,5 @@ module.exports = function SearchCtrl($state, $http, SearchService) {
             })
         })
     };
+    if (!localStorage['myLocation']) self.myLocation();
 }

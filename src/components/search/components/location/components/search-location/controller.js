@@ -3,7 +3,7 @@ module.exports = function($stateParams, localStorageService, ModalService, Resul
     var self = this;
 
     ResultsService.resetLocationsData();
-    SearchService.backVal = undefined;
+    SearchService.backLinkEdit("search.location");
 
     var errors = {
         "200": "ambiguous location",

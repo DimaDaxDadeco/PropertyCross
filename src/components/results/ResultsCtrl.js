@@ -1,13 +1,14 @@
-module.exports = function($scope, $stateParams, SearchService, ResultsService) {
+module.exports = function($scope, $stateParams, ResultsService) {
 
     var self = this;
-    // SearchService.backVal = undefined; ???
+    if ($stateParams.backLink) ResultsService.backLink = $stateParams.backLink;
+    self.backLink = ResultsService.backLink;
 
     if (!ResultsService.houseList.length) {
-        self.pageNum = 1;
+        self.numPage = 1;
         ResultsService.getLocations(); 
     } else {
-        self.pageNum = ResultsService.numPage;
+        self.numPage = ResultsService.numPage;
     }
 
     $scope.$watch(function() {
@@ -15,11 +16,11 @@ module.exports = function($scope, $stateParams, SearchService, ResultsService) {
     }, function(modalInstance) {
         self.houseList = ResultsService.houseList;  
         self.numHouse = ResultsService.totalRes; 
-        self.visibleElementsAmount = self.houseList.length < self.numHouse ? self.houseList.length : self.numHouse;   
+        self.visibleElementsAmount = self.houseList.length < self.numHouse ? self.houseList.length : self.numHouse; 
     });
 
     self.LoadMore = function() {
-        ResultsService.getLocations(++self.pageNum).then(function(response){
+        ResultsService.getLocations(++self.numPage).then(function(response){
             self.houseList = ResultsService.houseList;
             self.visibleElementsAmount = self.houseList.length;
         });

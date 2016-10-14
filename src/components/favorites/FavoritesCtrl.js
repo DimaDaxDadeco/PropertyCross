@@ -1,33 +1,19 @@
-module.exports = function(FavoritesService) {
+module.exports = function($stateParams, FavoritesService) {
 
     var self = this;
+    self.backLink = $stateParams.backLink;
 
-    if (!localStorage['favorites']) localStorage['favorites'] = JSON.stringify([]);
-    self.houseList = JSON.parse(localStorage['favorites']);   
-
-    self.currentList = 0;
-    self.elemOnList = 20;
-
-    self.numHouse = FavoritesService.listLength(self.houseList); 
-
-
-    self.visEl = self.elemOnList < self.numHouse ? self.elemOnList : self.numHouse;
-
-    self.houseList = FavoritesService.get(self.currentList * self.elemOnList, self.elemOnList, JSON.parse(localStorage['favorites']));
-
-    self.LoadMore = function() {
-        self.currentList ++;
-        if (self.currentList * self.elemOnList + self.elemOnList > self.numHouse) {
-            self.visEl = self.numHouse;
-        } else {
-            self.visEl = self.currentList * self.elemOnList + self.elemOnList;
-        }
-        var newElemList = FavoritesService.get(self.currentList * self.elemOnList, self.elemOnList, JSON.parse(localStorage['favorites']));
-
-        self.houseList = self.houseList.concat(newElemList);
+    if (!localStorage['favorites']) {
+        localStorage['favorites'] = JSON.stringify([]);
     }
-    self.loadMoreHide = function() {
-        return (self.currentList * self.elemOnList + self.elemOnList) >= self.numHouse ? "hide": "";
+    self.houseList = JSON.parse(localStorage['favorites']); 
+    self.visibleElementsAmount = self.houseList.length;
+
+    if ($stateParams.backLink) FavoritesService.backLink = $stateParams.backLink;
+    self.backLink = FavoritesService.backLink;
+
+    self.noElements = function() {
+        return self.visibleElementsAmount ? "hide" : "";
     }
 
 }

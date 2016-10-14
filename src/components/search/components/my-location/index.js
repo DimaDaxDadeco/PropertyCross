@@ -1,5 +1,4 @@
 var angular = require('angular');
-// var MyLocationService = require('./LocationService');
 var MyLocationTpl = require('./MyLocationTemplate.html');
 var MyLocationComponent = require('./components/myLocation-item');
 

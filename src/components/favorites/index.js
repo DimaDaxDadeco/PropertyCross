@@ -11,7 +11,10 @@ angular
             .state('favorites', {
                 template: FavoritesTemplate,
                 controller: FavoritesCtrl,
-                controllerAs: '$ctrl'
+                controllerAs: '$ctrl',
+                params: {
+                    backLink: null
+                }
             })
     })
     .service('FavoritesService', FavoritesService)

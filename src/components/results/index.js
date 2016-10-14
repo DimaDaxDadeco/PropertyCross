@@ -14,7 +14,8 @@ angular
                 params: {
                     houseList: null,
                     location: null,
-                    totalRes: null
+                    totalRes: null,
+                    backLink: null
                 },
                 controllerAs: '$ctrl'
             });

@@ -11,7 +11,8 @@ angular.module('details', [])
                 template: DetailsTpl,
                 controller: DetailsCtrl,
                 params: {
-                    houseDetail: null
+                    houseDetail: null,
+                    backLink: null
                 }
             });
     })

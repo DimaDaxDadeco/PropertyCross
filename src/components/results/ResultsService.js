@@ -16,7 +16,6 @@ module.exports = function ResultsService($stateParams, $http, localStorageServic
                 self.houseList = self.houseList.concat(response.data.response.listings);
                 self.totalPage = response.data.response.total_pages; 
                 self.totalRes = response.data.response.total_results;
-                SearchService.backVal = "results";
             });
     };
     

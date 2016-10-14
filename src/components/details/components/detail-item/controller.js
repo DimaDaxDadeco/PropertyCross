@@ -1,9 +1,9 @@
-module.exports = function($stateParams, ResultsService, SearchService) {
+module.exports = function($stateParams, ResultsService) {
     
     var self = this;
 
     self.houseDetail = $stateParams.houseDetail;
-    self.backVal = SearchService.backVal;
+    self.backLink = $stateParams.backLink;
 
     // self.add = function() {
     self.favorites = localStorage['favorites'] ? JSON.parse(localStorage['favorites']): [];
