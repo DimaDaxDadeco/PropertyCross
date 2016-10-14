@@ -1,3 +1,4 @@
-module.exports = function($stateParams) {
- 
+module.exports = function() {
+    var self = this;
+    self.backLink = "results";
 }

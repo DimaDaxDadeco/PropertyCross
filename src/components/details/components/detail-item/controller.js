@@ -5,7 +5,6 @@ module.exports = function($stateParams, ResultsService) {
     self.houseDetail = $stateParams.houseDetail;
     self.backLink = $stateParams.backLink;
 
-    // self.add = function() {
     self.favorites = localStorage['favorites'] ? JSON.parse(localStorage['favorites']): [];
     if (localStorage['favorites']) {
         self.favorites = JSON.parse(localStorage['favorites']);
@@ -15,18 +14,13 @@ module.exports = function($stateParams, ResultsService) {
                 checkEq = true;
             }                
         }
-        /*if (!checkEq) {
-            self.favorites.push(self.houseDetail);
-        }*/
-    } /*else {
-        self.favorites.push(self.houseDetail);            
-    } */
+    } 
     self.add = function() {
         checkEq = true;
         self.favorites.push(self.houseDetail);   
         localStorage['favorites'] = JSON.stringify(self.favorites);       
     }
-    // }
+    
     self.hideAddFavorites = function() {
         return checkEq ? "hide" : "";
     }

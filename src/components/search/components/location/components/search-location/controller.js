@@ -1,4 +1,4 @@
-module.exports = function($stateParams, localStorageService, ModalService, ResultsService, SearchService) {
+module.exports = function($stateParams, ModalService, ResultsService, SearchService) {
 
     var self = this;
 

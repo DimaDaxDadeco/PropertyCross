@@ -1,5 +1,5 @@
 var controller = require('./controller');
-var template = require('./template.html');
+var template = require('../../../common/house-list-item/template.html');
 
 module.exports = {
     controller: controller,
