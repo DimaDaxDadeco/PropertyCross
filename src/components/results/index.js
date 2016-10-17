@@ -2,7 +2,7 @@ var angular = require('angular');
 var ResultsCtrl = require('./ResultsCtrl');
 var ResultsService = require('./ResultsService');
 var ResultsTpl = require('./ResultsTemplate.html');
-var ResultsComponent = require('./components/results-item');
+var ResultsComponent = require('../common/house-list-item');
 
 angular
     .module('results', [])

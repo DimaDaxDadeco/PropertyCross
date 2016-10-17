@@ -1,6 +1,4 @@
 var angular = require('angular');
-var DetailsCtrl = require('./DetailsCtrl');
-var DetailsService = require('./DetailsService');
 var DetailsTpl = require('./DetailsTemplate.html');
 var DetailsComponent = require('./components/detail-item');
 
@@ -9,12 +7,10 @@ angular.module('details', [])
         $stateProvider
             .state('details', {
                 template: DetailsTpl,
-                controller: DetailsCtrl,
                 params: {
                     houseDetail: null,
                     backLink: null
                 }
             });
     })
-    .component('itemDetails', DetailsComponent)
-    .service('DetailsService', DetailsService);
+    .component('detailItem', DetailsComponent);

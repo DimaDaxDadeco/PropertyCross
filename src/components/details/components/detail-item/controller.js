@@ -6,26 +6,19 @@ module.exports = function($stateParams, ResultsService) {
     self.backLink = $stateParams.backLink;
 
     self.favorites = localStorage['favorites'] ? JSON.parse(localStorage['favorites']): [];
-    if (localStorage['favorites']) {
-        self.favorites = JSON.parse(localStorage['favorites']);
-        var checkEq = false;
-        for (let i = 0; i < self.favorites.length; i++) {
-            if (self.favorites[i].title == self.houseDetail.title) {
-                checkEq = true;
-            }                
+    self.isHouseFavorite = false;
+    for (let i = 0; i < self.favorites.length; i++) {
+        if (self.favorites[i].title == self.houseDetail.title) {
+            self.isHouseFavorite = true;
         }
-    } 
-    self.add = function() {
-        checkEq = true;
+    }
+    self.addToFavorites = function() {
+        self.isHouseFavorite = true;
         self.favorites.push(self.houseDetail);   
-        localStorage['favorites'] = JSON.stringify(self.favorites);       
-    }
-    
-    self.hideAddFavorites = function() {
-        return checkEq ? "hide" : "";
-    }
+        localStorage['favorites'] = JSON.stringify(self.favorites);
+    };
 
     var arrTittle = $stateParams.houseDetail.title.split(',');
 
-    self.houseDetail.title = arrTittle[0] + ',' + arrTittle[1]; 
+    self.houseDetail.title = arrTittle[0] + ',' + arrTittle[1];
 }

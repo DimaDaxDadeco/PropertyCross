@@ -1,8 +1,10 @@
 module.exports = function($scope, $stateParams, ResultsService) {
 
     var self = this;
+
     if ($stateParams.backLink) ResultsService.backLink = $stateParams.backLink;
     self.backLink = ResultsService.backLink;
+    self.back = "results";
 
     if (!ResultsService.houseList.length) {
         self.numPage = 1;
@@ -14,7 +16,7 @@ module.exports = function($scope, $stateParams, ResultsService) {
     $scope.$watch(function() {
         return ResultsService.houseList;
     }, function(modalInstance) {
-        self.houseList = ResultsService.houseList;  
+        self.houseList = ResultsService.houseList;
         self.numHouse = ResultsService.totalRes; 
         self.visibleElementsAmount = self.houseList.length < self.numHouse ? self.houseList.length : self.numHouse; 
     });
@@ -24,9 +26,5 @@ module.exports = function($scope, $stateParams, ResultsService) {
             self.houseList = ResultsService.houseList;
             self.visibleElementsAmount = self.houseList.length;
         });
-    };
-
-    self.loadMoreHide = function() {
-        return self.visibleElementsAmount >= self.numHouse ? "hide": "";
     };
 }

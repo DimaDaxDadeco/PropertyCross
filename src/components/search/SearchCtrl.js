@@ -28,5 +28,4 @@ module.exports = function SearchCtrl($scope, $state, $http, SearchService) {
             })
         })
     };
-    if (!localStorage['myLocation']) self.myLocation();
 }

@@ -5,10 +5,10 @@
         </div>
     </div>
     <div class="row">
+        <a ui-sref="{{$ctrl.backLink}}" class="back">Back</a>
         <ul class="result-list">
-            <li><a ui-sref="{{$ctrl.backLink}}" class="back">Back</a></li>
-            <favorites-item ng-repeat="house in $ctrl.houseList" house="house"></favorites-item>
-            <li ng-class="$ctrl.noElements()">No favorites. Please added.</li>
+            <favorites-item ng-repeat="house in $ctrl.houseList" house="house" back="$ctrl.back"></favorites-item>
+            <li ng-if="!$ctrl.visibleElementsAmount">No favorites yet.</li>
         </ul>
     </div>
 </div>

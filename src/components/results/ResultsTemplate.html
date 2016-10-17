@@ -5,10 +5,10 @@
         </div>
     </div>
     <div class="row">
+        <a ui-sref="{{$ctrl.backLink}}" class="back">Back</a>
         <ul class="result-list">
-            <li><a ui-sref="{{$ctrl.backLink}}" class="back">Back</a></li>
-            <results-item ng-repeat="house in $ctrl.houseList" house="house"></results-item>
-            <li class="load-more" ng-class="$ctrl.loadMoreHide()"><input type="submit" name="load-more" ng-click="$ctrl.LoadMore()" value="load more"></li>
+            <results-item ng-repeat="house in $ctrl.houseList" house="house" back="$ctrl.back"></results-item>
         </ul>
+        <div class="load-more" ng-if="$ctrl.visibleElementsAmount < $ctrl.numHouse"><input type="submit" name="load-more" ng-click="$ctrl.LoadMore()" value="load more"></div>
     </div>
 </div>

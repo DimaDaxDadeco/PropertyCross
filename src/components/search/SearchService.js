@@ -15,15 +15,15 @@ module.exports = function SearchService($http) {
                 }
                 resolve(coordinates);
             }, reject);
-        });        
+        });
     };
     self.getByLocation = function(response) {
         var url = "http://api.nestoria.co.uk/api?country=uk&pretty=1&action=search_listings&encoding=json&listing_type=buy&page=1&centre_point=51.684183,-3.431481";
         // var url = "http://api.nestoria.co.uk/api?country=uk&pretty=1&action=search_listings&encoding=json&listing_type=buy&page=1&centre_point=" + response.lat + "," + response.lng;
         return $http.get(url);
     };
-    self.backLinkEdit = function(backLink) {
+    self.setBackLink = function(backLink) {
         self.backLink = backLink;
     };
-    self.backLinkEdit("search.mylocation");
+    self.setBackLink("search.mylocation");
 }

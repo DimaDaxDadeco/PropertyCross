@@ -1,7 +1,7 @@
 var angular = require('angular');
 var FavoritesCtrl = require('./FavoritesCtrl');
 var FavoritesService = require('./FavoritesService');
-var FavoritesComponent = require('./component/favorites-item');
+var FavoritesComponent = require('./../common/house-list-item');
 var FavoritesTemplate = require('./FavoritesTemplate.html');
 
 angular
