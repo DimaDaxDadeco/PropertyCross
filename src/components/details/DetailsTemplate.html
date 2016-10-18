@@ -1,1 +1,14 @@
-<detail-item></detail-item>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-5"><h2>Property Details</h2></div>
+        <div class="col-xs-6 favourite" ng-if="!$ctrl.isHouseFavorite"><a ng-click="$ctrl.addToFavorites()"> + </a></div>
+    </div>
+    <a ui-sref="{{$ctrl.backLink}}" class="back">Back</a>
+    <div class="row">
+        <p>{{$ctrl.houseDetail.price}}</p>
+        <p>{{$ctrl.houseDetail.title}}</p>
+        <div class="col-xs-12"><img ng-src="{{$ctrl.houseDetail.img_url}}"></div>
+        <p>{{$ctrl.houseDetail.bedroom_number}} bed, {{$ctrl.houseDetail.bathroom_number}} bathrooms</div>
+        <p>{{$ctrl.houseDetail.summary}}</p>
+    </div>
+</div>

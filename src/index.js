@@ -5,8 +5,6 @@ require("angular-ui-router");
 require("angular-local-storage");
 require("./components");
 
-Run();
-
 angular.module('PropertyCross', [
   'ui.router',
   'LocalStorageModule',
@@ -16,9 +14,7 @@ angular.module('PropertyCross', [
   'results',
   'ModalService',
   'common'
-]);
-
-function Run() {
+]).run(function () {
   if(!localStorage['favorites']) {
       localStorage['favorites'] = JSON.stringify([]);
   }
@@ -31,4 +27,4 @@ function Run() {
   if(!localStorage['recentSearch']) {
       localStorage['recentSearch'] = JSON.stringify([]);
   }
-}
+});

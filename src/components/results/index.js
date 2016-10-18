@@ -2,7 +2,6 @@ var angular = require('angular');
 var ResultsCtrl = require('./ResultsCtrl');
 var ResultsService = require('./ResultsService');
 var ResultsTpl = require('./ResultsTemplate.html');
-var ResultsComponent = require('../common/house-list-item');
 
 angular
     .module('results', [])
@@ -20,5 +19,4 @@ angular
                 controllerAs: '$ctrl'
             });
     })
-    .service('ResultsService', ResultsService)
-    .component('resultsItem', ResultsComponent);
+    .service('ResultsService', ResultsService);

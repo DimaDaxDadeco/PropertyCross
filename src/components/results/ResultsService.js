@@ -7,7 +7,9 @@ module.exports = function ResultsService($stateParams, $http, localStorageServic
         if (!page) {
             self.resetLocationsData();
         }
-        if ($stateParams.location) localStorage['location'] = $stateParams.location;
+        if ($stateParams.location) {
+            localStorage['location'] = $stateParams.location;
+        }
         var url = "http://api.nestoria.co.uk/api?country=uk&pretty=1&action=search_listings&encoding=json&listing_type=buy&page=" + (page || 1) + "&place_name=" + localStorage['location'];
         
         return $http.get(url)

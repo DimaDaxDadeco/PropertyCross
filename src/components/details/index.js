@@ -1,6 +1,6 @@
 var angular = require('angular');
 var DetailsTpl = require('./DetailsTemplate.html');
-var DetailsComponent = require('./components/detail-item');
+var DetailsCtrl = require('./DetailsCtrl');
 
 angular.module('details', [])
     .config(function($stateProvider) {
@@ -10,7 +10,8 @@ angular.module('details', [])
                 params: {
                     houseDetail: null,
                     backLink: null
-                }
+                },
+                controller: DetailsCtrl,
+                controllerAs: "$ctrl"
             });
-    })
-    .component('detailItem', DetailsComponent);
+    });

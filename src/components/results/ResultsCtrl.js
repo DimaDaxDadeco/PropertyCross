@@ -1,10 +1,11 @@
-module.exports = function($scope, $stateParams, ResultsService) {
+module.exports = function($scope, $stateParams, ResultsService, NavigationService) {
 
     var self = this;
 
-    if ($stateParams.backLink) ResultsService.backLink = $stateParams.backLink;
-    self.backLink = ResultsService.backLink;
-    self.back = "results";
+    if ($stateParams.backLink) {
+        NavigationService.backLink = $stateParams.backLink;
+    }
+    self.backLink = NavigationService.backLink;
 
     if (!ResultsService.houseList.length) {
         self.numPage = 1;

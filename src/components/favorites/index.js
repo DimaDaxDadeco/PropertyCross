@@ -1,7 +1,5 @@
 var angular = require('angular');
 var FavoritesCtrl = require('./FavoritesCtrl');
-var FavoritesService = require('./FavoritesService');
-var FavoritesComponent = require('./../common/house-list-item');
 var FavoritesTemplate = require('./FavoritesTemplate.html');
 
 angular
@@ -16,6 +14,4 @@ angular
                     backLink: null
                 }
             })
-    })
-    .service('FavoritesService', FavoritesService)
-    .component('favoritesItem', FavoritesComponent);
+    });

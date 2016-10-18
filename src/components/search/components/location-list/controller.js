@@ -1,7 +1,7 @@
 module.exports = function($stateParams, ResultsService, ModalService, SearchService) {
 
     var self = this;
-
+    
     ResultsService.resetLocationsData();
     SearchService.setBackLink(self.backLink);
 
@@ -28,11 +28,11 @@ module.exports = function($stateParams, ResultsService, ModalService, SearchServ
 
     self.houseResponse = $stateParams.houseResponse;
 
-    if ($stateParams.houseResponse && localStorage[self.locationName]) {
+    if ($stateParams.houseResponse) {
         self.recentSearch = JSON.parse(localStorage[self.locationName]);
 
         var titles = [];
-        self.recentSearch.forEach(function(item, i, arr) {
+        self.recentSearch.forEach(function(item) {
             titles.push(item.title)
         });
         var numOfElement = titles.indexOf($stateParams.houseResponse.locations[0].long_title);

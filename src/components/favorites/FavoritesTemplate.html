@@ -7,7 +7,7 @@
     <div class="row">
         <a ui-sref="{{$ctrl.backLink}}" class="back">Back</a>
         <ul class="result-list">
-            <favorites-item ng-repeat="house in $ctrl.houseList" house="house" back="$ctrl.back"></favorites-item>
+            <house-list-item ng-repeat="house in $ctrl.houseList" house="house" back="'favorites'"></house-list-item>
             <li ng-if="!$ctrl.visibleElementsAmount">No favorites yet.</li>
         </ul>
     </div>
