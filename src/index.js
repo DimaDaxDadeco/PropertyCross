@@ -15,16 +15,10 @@ angular.module('PropertyCross', [
   'ModalService',
   'common'
 ]).run(function () {
-  if(!localStorage['favorites']) {
-      localStorage['favorites'] = JSON.stringify([]);
-  }
-  if(!localStorage['location']) {
-      localStorage['location'] = JSON.stringify([]);
-  }
-  if(!localStorage['myLocation']) {
-      localStorage['myLocation'] = JSON.stringify([]);
-  }
-  if(!localStorage['recentSearch']) {
-      localStorage['recentSearch'] = JSON.stringify([]);
+  var localStorageNames = ['favorites', 'location', 'myLocation', 'recentSearch'];
+  for (var i = 0, max = localStorageNames.length; i < max; i++) {
+    if(!localStorage[localStorageNames[i]]) {
+      localStorage[localStorageNames[i]] = JSON.stringify([]);
+    }
   }
 });
