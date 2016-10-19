@@ -1,11 +1,11 @@
-module.exports = function SearchCtrl($scope, $state, $http, SearchService) {
+module.exports = function SearchCtrl($scope, $state, $http, SearchService, NavigationService) {
 
     var self = this;
     
     $scope.$watch(function() {
-        return SearchService.backLink;
+        return NavigationService.backLink;
     }, function() {
-        self.backLink = SearchService.backLink;
+        self.backLink = NavigationService.backLink;
     });
 
     self.getLocations = function () {

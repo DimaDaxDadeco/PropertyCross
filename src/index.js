@@ -12,13 +12,18 @@ angular.module('PropertyCross', [
   'favorites',
   'details',
   'results',
-  'ModalService',
+  'services',
   'common'
-]).run(function () {
+]).config(function($locationProvider) {
+  $locationProvider.html5Mode({
+    enabled: true,
+    requireBase: false
+  });
+}).run(function () {
   var localStorageNames = ['favorites', 'location', 'myLocation', 'recentSearch'];
-  for (var i = 0, max = localStorageNames.length; i < max; i++) {
-    if(!localStorage[localStorageNames[i]]) {
-      localStorage[localStorageNames[i]] = JSON.stringify([]);
+  localStorageNames.forEach(function(item) {
+    if(!localStorage[item]) {
+      localStorage[item] = JSON.stringify([]);
     }
-  }
+  });
 });

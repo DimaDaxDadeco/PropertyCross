@@ -1,4 +1,4 @@
-module.exports = function SearchService($http) {
+module.exports = function SearchService($http, NavigationService) {
 
     var self = this;
 
@@ -22,8 +22,4 @@ module.exports = function SearchService($http) {
         // var url = "http://api.nestoria.co.uk/api?country=uk&pretty=1&action=search_listings&encoding=json&listing_type=buy&page=1&centre_point=" + response.lat + "," + response.lng;
         return $http.get(url);
     };
-    self.setBackLink = function(backLink) {
-        self.backLink = backLink;
-    };
-    self.setBackLink("search.mylocation");
 }

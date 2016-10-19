@@ -2,7 +2,7 @@ var angular = require('angular');
 var SearchCtrl = require('./SearchCtrl');
 var SearchService = require('./SearchService');
 var SearchTpl = require('./SearchTemplate.html');
-var SearchComponent = require('./components/location-list');
+var LocationListComponent = require('./components/location-list');
 require('./location');
 require('./my-location');
 
@@ -11,11 +11,7 @@ angular
         'search.location',
         'search.myLocation'
 ])
-    .config(function($stateProvider, $locationProvider) {
-        $locationProvider.html5Mode({
-            enabled: true,
-            requireBase: false
-        });
+    .config(function($stateProvider) {
         $stateProvider
             .state('search', {
                 url: "/",
@@ -26,4 +22,4 @@ angular
             });
     })
     .service('SearchService', SearchService)
-    .component('locationList', SearchComponent);
+    .component('locationList', LocationListComponent);
