@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-xs-12">
             <ul class="list-unstyled list-locations">
-                <li><spinner name="houseListSpinner" img-src="./img/spinner-text.gif" show="loading"></spinner></li>
+                <li><spinner name="locationListSpinner" img-src="./img/spinner-text.gif" show="loading"></spinner></li>
                  <li ng-repeat="resp in $ctrl.recentSearch">
                     <a ui-sref="results({location: resp.title, totalRes: resp.totalRes, backLink: '{{$ctrl.backLink}}'})">{{resp.title}} #{{$index + 1}} ({{resp.totalRes}})</a>
                 </li>

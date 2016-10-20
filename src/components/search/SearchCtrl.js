@@ -10,19 +10,19 @@ module.exports = function SearchCtrl($scope, $state, $http, SearchService, Navig
     });
 
     self.getLocations = function () {
-        spinnerService.show('houseListSpinner');
+        spinnerService.show('locationListSpinner');
         SearchService.getLocations(self.searchQuery)
             .then(function(response) {
                 $state.go('search.location', {
                     houseResponse: response.data.response
                 });
-                spinnerService.hide('houseListSpinner');
+                spinnerService.hide('locationListSpinner');
             });
         $scope.loading = false;
     };
 
     self.myLocation = function() {
-        spinnerService.show('houseListSpinner');
+        spinnerService.show('locationListSpinner');
           SearchService.getCurrentLocation()
             .then(function(pos) {
               SearchService.getByLocation(pos)
@@ -30,7 +30,7 @@ module.exports = function SearchCtrl($scope, $state, $http, SearchService, Navig
                     $state.go('search.mylocation', {
                         houseResponse: locations.data.response
                     });
-                    spinnerService.hide('houseListSpinner');
+                    spinnerService.hide('locationListSpinner');
                 })
             });
         $scope.loading = false;
