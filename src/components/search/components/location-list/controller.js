@@ -1,7 +1,7 @@
 module.exports = function($stateParams, ResultsService, ModalService, NavigationService) {
 
     var self = this;
-    
+
     ResultsService.resetLocationsData();
     NavigationService.setBackLink(self.backLink);
 
@@ -13,16 +13,16 @@ module.exports = function($stateParams, ResultsService, ModalService, Navigation
         "900": "bad request",
         "500": "internal Nestoria error"
     },
-        responseCode, 
+        responseCode,
         hasError,
-        titles,
+        titles = [],
         numOfElement;
 
     if($stateParams.houseResponse) {
         responseCode = $stateParams.houseResponse.application_response_code;
         hasError = !!errors[responseCode];
     }
-    
+
     self.recentSearch = JSON.parse(localStorage[self.locationName]);
 
     if (hasError) {
@@ -33,9 +33,6 @@ module.exports = function($stateParams, ResultsService, ModalService, Navigation
     self.houseResponse = $stateParams.houseResponse;
 
     if ($stateParams.houseResponse) {
-        self.recentSearch = JSON.parse(localStorage[self.locationName]);
-
-        titles = [];
         self.recentSearch.forEach(function(item) {
             titles.push(item.title)
         });
@@ -43,7 +40,7 @@ module.exports = function($stateParams, ResultsService, ModalService, Navigation
 
         if (numOfElement !== -1) {
             self.recentSearch.splice(numOfElement, 1);
-        }       
+        }
     }
 
     if ($stateParams.houseResponse) {

@@ -17,6 +17,8 @@
     "webpack-dev-server": "^1.16.1"
   },
   "devDependencies": {
+    "angular-spinners": "^3.1.2",
+    "bootstrap-css": "^3.0.0",
     "html-loader": "^0.4.4",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.1"

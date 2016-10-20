@@ -1,14 +1,19 @@
 <div class="container search-top">
     <div class="row">
-        <div class="col-xs-12 favourite"><a ui-sref="favorites({backLink: $ctrl.backLink})">Favourite</a></div>
+        <div class="col-xs-12 favorites"><a class="btn btn-default pull-right" ui-sref="favorites({backLink: $ctrl.backLink})" role="button">Favourite</a></div>
     </div>
     <div class="row">
-        <p>Use the form below to search for houses to buy. You can search by place-name, postcode, or click 'My location', to search in your current location!</p>
+
+        <p class="col-xs-12">Use the form below to search for houses to buy. You can search by place-name, postcode, or click 'My location', to search in your current location!</p>
     </div>
     <div class="row">
-        <input type="text" name="searchText" placeholder="Search..." class="search-text" ng-model="$ctrl.searchQuery">
-        <input type="submit" name="go" class="go" value="Go" ng-click="$ctrl.getLocations()">
-        <input type="submit" name="myLocation" class="myLocation" value="My location" ng-click="$ctrl.myLocation()">
+        <div class="col-xs-12">
+            <form class="form-inline">
+                <input type="text" name="searchText" placeholder="Search..." class="search-text form-control" ng-model="$ctrl.searchQuery">
+                <input type="submit" name="go" class="btn btn-default" value="Go" ng-click="$ctrl.getLocations()">
+                <input type="submit" name="myLocation" class="btn btn-default" value="My location" ng-click="$ctrl.myLocation()">
+            </form>
+        </div>
     </div>
 </div>
 <div ui-view></div>

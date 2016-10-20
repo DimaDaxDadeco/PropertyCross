@@ -1,4 +1,4 @@
-module.exports = function ResultsService($stateParams, $http, localStorageService, SearchService) {
+module.exports = function ResultsService($stateParams, $http, localStorageService, SearchService, spinnerService) {
 
     var self = this;
     self.numPage = 1;
@@ -11,23 +11,22 @@ module.exports = function ResultsService($stateParams, $http, localStorageServic
             localStorage['location'] = $stateParams.location;
         }
         var url = "http://api.nestoria.co.uk/api?country=uk&pretty=1&action=search_listings&encoding=json&listing_type=buy&page=" + (page || 1) + "&place_name=" + localStorage['location'];
-        
+
         return $http.get(url)
             .then(function(response) {
-                ++self.numPage; 
+                ++self.numPage;
                 self.houseList = self.houseList.concat(response.data.response.listings);
-                self.totalPage = response.data.response.total_pages; 
+                self.totalPage = response.data.response.total_pages;
                 self.totalRes = response.data.response.total_results;
+                spinnerService.hide('houseListSpinner');
             });
     };
-    
+
     self.resetLocationsData = function() {
         self.houseList = [];
         self.numPage = 1;
         self.totalPage = undefined;
         self.totalRes = undefined;
     };
-
-
     self.resetLocationsData();
 }

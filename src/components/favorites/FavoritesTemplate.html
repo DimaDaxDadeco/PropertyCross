@@ -1,14 +1,18 @@
 <div class="container">
     <div class="row">
-        <div class="col-xs-12">
-            <p class="matches">Favorites</p>
+        <div class="col-xs-12 text-center">
+            <p><h2>Favorites</h2></p>
         </div>
     </div>
     <div class="row">
-        <a ui-sref="{{$ctrl.backLink}}" class="back">Back</a>
-        <ul class="result-list">
-            <house-list-item ng-repeat="house in $ctrl.houseList" house="house" back="'favorites'"></house-list-item>
-            <li ng-if="!$ctrl.visibleElementsAmount">No favorites yet.</li>
-        </ul>
+        <div class="col-xs-12">
+            <a ui-sref="{{$ctrl.backLink}}" class="btn btn-default back">Back</a>
+        </div>
+        <div class="col-xs-12">
+            <ul class="result-list list-unstyled">
+                <house-list-item ng-repeat="house in $ctrl.houseList" house="house" back="'favorites'"></house-list-item>
+                <li ng-if="!$ctrl.visibleElementsAmount">No favorites yet.</li>
+            </ul>
+        </div>
     </div>
 </div>
